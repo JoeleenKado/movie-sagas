@@ -12,8 +12,25 @@ import createSagaMiddleware from 'redux-saga';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery('FETCH_MOVIES', fetchMovieSaga);
+    //yield takeEvery('ADD_FRUIT', postFruit)
 }
+
+function* fetchMovieSaga(){
+    
+    console.log('in fetchMovieSaga');
+    try {
+        const movieData = yield axios.get('/api/movie');
+      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
+       // console.log('indexline24', giphyURL);
+       
+        yield put({ type:'SET_MOVIES', payload: giphyURL})
+    } catch (error) {
+        console.log('error fetching', error);
+        
+    }
+}
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
