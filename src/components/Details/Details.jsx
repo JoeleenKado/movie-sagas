@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 //     reduxState,
 // });
 
-class MovieList extends Component {
-    componentDidMount() {
-        // use component did mount to dispatch an action to request the movielist from the DB
-        this.getMovies()
-    }
+class Details extends Component {
+    // componentDidMount() {
+    //     // use component did mount to dispatch an action to request the movielist from the DB
+    //     this.getMovies()
+    // }
 
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
@@ -20,7 +20,7 @@ class MovieList extends Component {
             <div>
                 <h3>This is the Movie List</h3>
                 <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
-                <table className="center">
+                {/* <table className="center">
                 <tbody>
 
 
@@ -30,7 +30,7 @@ class MovieList extends Component {
                             {movie.title}</td>
                         </tr>)}
                         </tbody>
-            </table>
+            </table> */}
 
 
             </div>
@@ -38,4 +38,4 @@ class MovieList extends Component {
     }
 }
 const putReduxStateOnProps = (reduxState) => ({ reduxState });
-export default connect(putReduxStateOnProps)(MovieList);
+export default connect(putReduxStateOnProps)(Details);
