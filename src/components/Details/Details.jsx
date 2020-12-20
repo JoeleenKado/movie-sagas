@@ -42,9 +42,9 @@ class Details extends Component {
 
                 <h3>This is the Details Page</h3>
                 <pre>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</pre>
-                <button onClick={(event) => this.sendSearch(event)}>SEARCH</button>
+                {/* <button onClick={(event) => this.sendSearch(event)}>SEARCH</button> */}
 
-                <input onChange={this.handleChange} type='text' placeholder='Search for a title!' />
+                {/* <input onChange={this.handleChange} type='text' placeholder='Search for a title!' /> */}
 
                 {this.props.reduxState.movieReducer.map((movie) => {
                             return(

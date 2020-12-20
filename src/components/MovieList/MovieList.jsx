@@ -7,10 +7,10 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 // });
 
 class MovieList extends Component {
-    // componentDidMount() {
-    //     // use component did mount to dispatch an action to request the movielist from the DB
-    //     this.getMovies()
-    // }
+    componentDidMount() {
+        // use component did mount to dispatch an action to request the movielist from the DB
+        this.getMovies()
+    }
 
     getIt = (event) => {
         console.log('event happended')
@@ -18,8 +18,8 @@ class MovieList extends Component {
     }
 
     getDetails = (event, {movie}) => {
-        console.log('Gettin Details for :', movie.poster)
-        this.props.dispatch({ type: 'FETCH_DETAILS' });
+        console.log('Gettin Details for :', movie.title)
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: movie.title });
     // this.getMovies()
     }
 
@@ -38,12 +38,12 @@ render() {
                 {/* <Route exact path="/Details" component={Details} /> */}
                 <li><Link to="/Details">Details</Link></li>
                 {/* <li><Link to="/AddMovie">AddMovie</Link></li> */}
-                <h1>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</h1>
+                <h3>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</h3>
                 <h3>This is the Movie Poster List</h3>
 
                         {this.props.reduxState.movieReducer.map((movie) => {
                             return(
-                                <section  className="posterList" key={movie.id}> <Link to="/Details"><img value={movie} onClick={(event)=>this.getDetails(event, {movie})} src={movie.poster} alt=""/></Link> </section>
+                                <section  className="posterList" key={movie.id}> <Link to="/Details"><img onClick={(event)=>this.getDetails(event, {movie})} src={movie.poster} alt=""/></Link> </section>
                               )
                      })}
                     <button onClick={(event)=>this.getRandomGif(event)}>NEW GIF</button>
