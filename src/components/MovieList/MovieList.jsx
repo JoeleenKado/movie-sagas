@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 // const mapStateToProps = reduxState => ({
 //     reduxState,
@@ -17,10 +18,16 @@ class MovieList extends Component {
 
     render() {
         return (
-            <div>
+<div>
+
+{/* <Route exact path="/Details" component={Details} /> */}
+<li><Link to="/Details">Details</Link></li>
+<li><Link to="/AddMovie">AddMovie</Link></li>
+
+
                 <h3>This is the Movie List</h3>
                 <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
-                <table className="center">
+                {/* <table className="center">
                 <tbody>
 
 
@@ -30,7 +37,7 @@ class MovieList extends Component {
                             {movie.title}</td>
                         </tr>)}
                         </tbody>
-            </table>
+            </table> */}
 
 
             </div>

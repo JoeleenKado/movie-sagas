@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList.jsx'
-
+import Details from '../Details/Details.jsx'
+import AddMovie from '../AddMovie/AddMovie.jsx'
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
@@ -14,7 +15,8 @@ class App extends Component {
 
           <nav>
             <ul>
-              <li><Link to="/MovieList">MovieList</Link></li>
+            <li><Link to="/">Movie List</Link></li>
+
               {/* <li><Link to="/Understanding">Understanding</Link></li>
               <li><Link to="/Support">Support</Link></li>
               <li><Link to="/Comments">Comments</Link></li>
@@ -23,10 +25,13 @@ class App extends Component {
               {/* <li><Link to="/Admin">ADMIN</Link></li> */}
             </ul>
           </nav>
-          <Route exact path="/MovieList" component={MovieList} />
+          <Route exact path="/" component={MovieList} />
+          <Route path="/Details" component={Details} />
+          <Route path="/AddMovie" component={AddMovie} />
+
+
           {/* <Route exact path="/Understanding" component={Understanding} />
           <Route exact path="/Support" component={Support} />
-          <Route exact path="/Comments" component={Comments} />
           <Route exact path="/Review" component={Review} />
           <Route exact path="/Admin" component={Admin} />
           <Route exact path="/ThankYou" component={ThankYou} /> */}
