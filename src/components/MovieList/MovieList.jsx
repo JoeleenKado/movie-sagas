@@ -58,7 +58,7 @@ class MovieList extends Component {
                     {/* <ul> */}
                         {this.props.reduxState.movieReducer.map((movie) => {
                             return(
-                                <section className="posterList" key={movie.id}> {movie.poster} </section>
+                                <section className="posterList" key={movie.id}> <img src={movie.poster} alt=""/> </section>
                             )
                         })}
                     {/* </ul> */}
