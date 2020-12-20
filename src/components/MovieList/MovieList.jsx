@@ -19,10 +19,27 @@ class MovieList extends Component {
     render() {
         return (
 <div>
+<div className="navbarMovieList">
+{/* <li><Link to="/Details">Details</Link></li>
+<br/> */}
+<li id="addMovieNav"><Link to="/AddMovie">AddMovie</Link></li>
+{/* <li id="addMovieNav"><Link to="/AddMovie">AddMovie</Link></li> */}
+
+  {/* <div className="dropdown">  */}
+  {/* <button className="dropbtn" onClick="myFunction()">Dropdown
+    <i className="fa fa-caret-down"></i>
+  </button> */}
+   {/* <div className="dropdown-content" id="myDropdown">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+</div>  */}
+   {/* </div>   */}
+</div> 
 
 {/* <Route exact path="/Details" component={Details} /> */}
 <li><Link to="/Details">Details</Link></li>
-<li><Link to="/AddMovie">AddMovie</Link></li>
+{/* <li><Link to="/AddMovie">AddMovie</Link></li> */}
 
 
                 <h3>This is the Movie List</h3>

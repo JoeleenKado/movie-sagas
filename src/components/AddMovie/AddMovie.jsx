@@ -58,20 +58,20 @@ addMovie = (event) => {
                 {/* <h3>This is the Movie List</h3> */}
                 <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
                 
-                {/* <div className="navbar">
-  <a href="/">CANCEL</a>
-  <a href="#news">News</a>
-  <div className="dropdown"> */}
+                <div className="navbarAddMovie" id="cancelNav">
+                <li><Link to="/">CANCEL</Link></li>
+  {/* <a href="#news">News</a> */}
+  {/* <div className="dropdown">  */}
   {/* <button className="dropbtn" onClick="myFunction()">Dropdown
     <i className="fa fa-caret-down"></i>
   </button> */}
-  {/* <div className="dropdown-content" id="myDropdown">
+   {/* <div className="dropdown-content" id="myDropdown">
     <a href="#">Link 1</a>
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
-  </div>
-  </div> 
-</div> */}
+</div>  */}
+   {/* </div>   */}
+</div> 
 
 
                 <form onSubmit={this.addMovie}>
