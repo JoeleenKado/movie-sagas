@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as route, Link} from 'react-router-dom';
 
 
 
@@ -24,7 +24,7 @@ class Details extends Component {
                               <li><Link to="/">Back to List</Link></li>
 
                 <h3>This is the Details Page</h3>
-                <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
+                <pre>{JSON.stringify(this.props.reduxState.movieReducer)}</pre>
                 {/* <table className="center">
                 <tbody>
 

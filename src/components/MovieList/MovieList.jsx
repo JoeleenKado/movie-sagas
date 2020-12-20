@@ -17,7 +17,13 @@ class MovieList extends Component {
         this.getMovies()
     }
 
+    getDetails = (event, {movie}) => {
+        console.log('Gettin Details for :', movie.poster)
+        //this.props.dispatch({ type: 'FETCH_DETAILS' });
 
+
+        // this.getMovies()
+    }
 
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
@@ -58,11 +64,12 @@ class MovieList extends Component {
                     {/* <ul> */}
                         {this.props.reduxState.movieReducer.map((movie) => {
                             return(
-                                <section className="posterList" key={movie.id}> <img src={movie.poster} alt=""/> </section>
+                                <section className="posterList" key={movie.id}> <Link to="/Details"><img value={movie} onClick={(event)=>this.getDetails(event, {movie})} src={movie.poster} alt=""/></Link> </section>
                             )
                         })}
                     {/* </ul> */}
 
+                    <button onClick={(event)=>this.getRandomGif(event)}>NEW GIF</button>
 
 
 

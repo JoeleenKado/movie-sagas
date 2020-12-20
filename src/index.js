@@ -17,7 +17,22 @@ import { takeEvery, put} from 'redux-saga/effects';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovieSaga);
-    //yield takeEvery('ADD_FRUIT', postFruit)
+    yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
+}
+
+function* fetchDetailsSaga(){
+    
+    console.log('in fetchMovieSaga');
+    try {
+        const detailsData = yield axios.get('/api/movie/details');
+      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
+       // console.log('indexline24', giphyURL);
+       
+        yield put({ type:'SET_MOVIES', payload: detailsData.data})
+    } catch (error) {
+        console.log('error fetching', error);
+        
+    }
 }
 
 function* fetchMovieSaga(){
