@@ -16,6 +16,31 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:title', (req, res) => {
+  const title = req.params.title
+  const queryText = `SELECT *
+                     FROM movies
+                     WHERE title ILIKE $1`;
+  console.log('in get detailsQuerying DB...');
+console.log(title);
+
+  //SELECT * FROM songs WHERE id=$1;
+
+ // pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+
+  
+  pool.query(queryText, [title])
+    .then((result) => { res.send(result.rows); })
+    .catch((err) => {
+      console.log('Error completing query', err);
+      res.sendStatus(500);
+    });
+});
+
+
+
+
+
 
 
 

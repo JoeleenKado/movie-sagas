@@ -14,8 +14,25 @@ class Details extends Component {
     //     this.getMovies()
     // }
 
+    state = {
+        title: ''
+      }
+
+      handleChange = (event) => {
+        this.setState({
+          title: event.target.value
+        }, function() {
+            console.log(this.state);
+        })
+      }
+
+      sendSearch() {
+        // this.props.dispatch({ type: 'POST_SEARCH', payload: this.state.gifSearch });
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: this.state.title });
+      }
+
     getMovies() {
-        this.props.dispatch({ type: 'FETCH_MOVIES' });
+        this.props.dispatch({ type: 'FETCH_MOVIES'});
     }
 
     render() {
@@ -24,7 +41,20 @@ class Details extends Component {
                               <li><Link to="/">Back to List</Link></li>
 
                 <h3>This is the Details Page</h3>
-                <pre>{JSON.stringify(this.props.reduxState.movieReducer)}</pre>
+                <pre>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</pre>
+                <button onClick={(event) => this.sendSearch(event)}>SEARCH</button>
+
+                <input onChange={this.handleChange} type='text' placeholder='Search for a title!' />
+
+                {this.props.reduxState.movieReducer.map((movie) => {
+                            return(
+                                <section  className="posterList" key={movie.id}>{movie.title} 
+                                <br/>
+                                {movie.description}</section>
+                          
+                                )
+                                
+                        })}
                 {/* <table className="center">
                 <tbody>
 

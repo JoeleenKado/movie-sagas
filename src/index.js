@@ -20,11 +20,11 @@ function* rootSaga() {
     yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
 }
 
-function* fetchDetailsSaga(){
+function* fetchDetailsSaga(action){
     
-    console.log('in fetchMovieSaga');
+    console.log('in fetchDetailsSaga');
     try {
-        const detailsData = yield axios.get('/api/movie/details');
+        const detailsData = yield axios.get(`/api/movie/${action.payload}`);
       //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
        // console.log('indexline24', giphyURL);
        
