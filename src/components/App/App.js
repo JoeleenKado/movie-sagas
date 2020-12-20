@@ -15,7 +15,7 @@ class App extends Component {
 
           <nav>
             <ul>
-            <li><Link to="/">Movie List</Link></li>
+            {/* <li><Link to="/">Movie List</Link></li> */}
 
               {/* <li><Link to="/Understanding">Understanding</Link></li>
               <li><Link to="/Support">Support</Link></li>

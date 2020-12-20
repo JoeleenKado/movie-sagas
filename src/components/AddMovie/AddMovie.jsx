@@ -13,10 +13,7 @@ class AddMovie extends Component {
             title: '',
             poster: '',
             description: '',
-            genre: '',
-            family: '',
-            subfamily: '',
-            genus: ''
+            genre: ''
         }
     }
 
@@ -37,7 +34,21 @@ class AddMovie extends Component {
     }
 
 addMovie = (event) => {
-    console.log('adding Movie');
+    let field = this.state.newMovie;
+
+    if (field.title === '' || field.poster === '' || field.description === '' || field.genre === '') {
+        alert('Please fill out the input fields.')
+        // this.setState({
+        //     ...this.state.newMovie,
+        //         genre: ''
+        // })
+    } else {
+        // this.props.dispatch({ type: 'ADD_FEELING', payload: this.state })
+        // this.props.history.push('/Understanding');
+        console.log('adding Movie');
+
+    }
+
     // this.setState({
     //     newMovie: {
     //         ...this.state.newMovie,
@@ -59,7 +70,7 @@ addMovie = (event) => {
                 <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
                 
                 <div className="navbarAddMovie" id="cancelNav">
-                <li><Link to="/">CANCEL</Link></li>
+                <Link to="/">CANCEL</Link>
   {/* <a href="#news">News</a> */}
   {/* <div className="dropdown">  */}
   {/* <button className="dropbtn" onClick="myFunction()">Dropdown
@@ -75,7 +86,7 @@ addMovie = (event) => {
 
 
                 <form onSubmit={this.addMovie}>
-                <li><Link to="/">CANCEL</Link></li>
+                {/* <li><Link to="/">CANCEL</Link></li> */}
 
                     {/* <lable>Title:</lable> */}
                     <input type="text" placeholder="Title" value={this.state.newMovie.title} onChange={(event)=>this.handleChange(event, 'title')} />

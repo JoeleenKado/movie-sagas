@@ -28,7 +28,7 @@ function* fetchMovieSaga(){
       //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
        // console.log('indexline24', giphyURL);
        
-        yield put({ type:'SET_MOVIES', payload: movieData})
+        yield put({ type:'SET_MOVIES', payload: movieData.data})
     } catch (error) {
         console.log('error fetching', error);
         

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 // const mapStateToProps = reduxState => ({
 //     reduxState,
@@ -12,38 +12,73 @@ class MovieList extends Component {
         this.getMovies()
     }
 
+    getIt = (event) => {
+        console.log('event happended')
+        this.getMovies()
+    }
+
+
+
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
+
     }
 
     render() {
         return (
-<div>
-<div className="navbarMovieList">
-{/* <li><Link to="/Details">Details</Link></li>
+            <div>
+                <div className="navbarMovieList">
+                    <button onClick={this.getIt}>GetIt</button>
+                    {/* <li><Link to="/Details">Details</Link></li>
 <br/> */}
-<li id="addMovieNav"><Link to="/AddMovie">AddMovie</Link></li>
-{/* <li id="addMovieNav"><Link to="/AddMovie">AddMovie</Link></li> */}
+                    <Link to="/AddMovie">AddMovie</Link>
+                    {/* <li id="addMovieNav"><Link to="/AddMovie">AddMovie</Link></li> */}
 
-  {/* <div className="dropdown">  */}
-  {/* <button className="dropbtn" onClick="myFunction()">Dropdown
+                    {/* <div className="dropdown">  */}
+                    {/* <button className="dropbtn" onClick="myFunction()">Dropdown
     <i className="fa fa-caret-down"></i>
   </button> */}
-   {/* <div className="dropdown-content" id="myDropdown">
+                    {/* <div className="dropdown-content" id="myDropdown">
     <a href="#">Link 1</a>
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
 </div>  */}
-   {/* </div>   */}
-</div> 
+                    {/* </div>   */}
+                </div>
 
-{/* <Route exact path="/Details" component={Details} /> */}
-<li><Link to="/Details">Details</Link></li>
-{/* <li><Link to="/AddMovie">AddMovie</Link></li> */}
+                {/* <Route exact path="/Details" component={Details} /> */}
+                <li><Link to="/Details">Details</Link></li>
+                {/* <li><Link to="/AddMovie">AddMovie</Link></li> */}
 
 
-                <h3>This is the Movie List</h3>
-                <pre>{JSON.stringify(this.props.reduxState.movieReducer.data)}</pre>
+                <h1>THIS.PROPS.REDUXSTATE.MOVIEREDUCER:{JSON.stringify(this.props.reduxState.movieReducer)}</h1>
+                {/* <section> */}
+                <h3>This is the Movie Poster List</h3>
+
+                    {/* <ul> */}
+                        {this.props.reduxState.movieReducer.map((movie) => {
+                            return(
+                                <section className="posterList" key={movie.id}> {movie.poster} </section>
+                            )
+                        })}
+                    {/* </ul> */}
+
+
+
+
+
+                    {/* {this.props.reduxState.movieReducer.data} */}
+
+
+                    {/* {this.props.reduxState.movieReducer.data.map((movie) => {
+                    // <h1 key={movie.id}>
+                    return  'good job'
+                    //  </h1> 
+                       })} */}
+
+                {/* </section> */}
+
+
                 {/* <table className="center">
                 <tbody>
 
