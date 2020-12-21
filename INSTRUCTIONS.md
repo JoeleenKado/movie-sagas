@@ -35,7 +35,7 @@ Genres can be applied to many different movies. Movies can have multiple genres.
 
 ### Home / List Page
 
-This should display all of the movies in the movie database. When a movie poster is clicked, a user should be brought to the `/details` view.
+X This should display all of the movies in the movie database. When a movie poster is clicked, a user should be brought to the `/details` view.
 
 ### Details Page
 
@@ -45,7 +45,7 @@ This should show all details **including genres**, for the selected movie.
 
 The details page should have the button:
 
-- `Back to List` button, which should bring the user to the Home Page
+- x`Back to List` button, which should bring the user to the Home Page
 
 
 > Base functionality does not require the movie details to load correctly after refresh of the browser.
@@ -57,7 +57,7 @@ This should show:
 -x an input field (for the movie title)
 -x an input field (for the movie poster image URL))
 -x a textarea (for the movie description)
-- a dropdown (for the genres)
+- xa dropdown (for the genres)
 
 The Add Movie page should have the buttons:
 
