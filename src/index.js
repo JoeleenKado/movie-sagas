@@ -11,45 +11,51 @@ import axios from 'axios';
 
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put} from 'redux-saga/effects';
-
+import { takeEvery, put } from 'redux-saga/effects';
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovieSaga);
     yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
+    // yield takeEvery('ADD_MOVIE', addMovieSaga);
 }
 
-function* fetchDetailsSaga(action){
-    
+// function* addMovieSaga(action){
+
+//     console.log('in addMovieSaga');
+//     console.log('action.payload', action.payload);
+
+//     try {
+//         const movieData = yield axios.post(`/api/movie/${action.payload}`);
+//       //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
+//        // console.log('indexline24', giphyURL);
+
+//         yield put({ type:'SET_MOVIES', payload: movieData.data})
+//     } catch (error) {
+//         console.log('error fetching', error);
+
+//     }
+// }
+
+function* fetchDetailsSaga(action) {
     console.log('in fetchDetailsSaga');
     try {
         const detailsData = yield axios.get(`/api/movie/${action.payload}`);
-      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
-       // console.log('indexline24', giphyURL);
-       
-        yield put({ type:'SET_MOVIES', payload: detailsData.data})
+        yield put({ type: 'SET_MOVIES', payload: detailsData.data })
     } catch (error) {
         console.log('error fetching', error);
-        
     }
 }
 
-function* fetchMovieSaga(){
-    
+function* fetchMovieSaga() {
     console.log('in fetchMovieSaga');
     try {
         const movieData = yield axios.get('/api/movie');
-      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
-       // console.log('indexline24', giphyURL);
-       
-        yield put({ type:'SET_MOVIES', payload: movieData.data})
+        yield put({ type: 'SET_MOVIES', payload: movieData.data })
     } catch (error) {
         console.log('error fetching', error);
-        
     }
 }
-
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -87,6 +93,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();

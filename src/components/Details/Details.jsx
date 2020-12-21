@@ -1,74 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {HashRouter as route, Link} from 'react-router-dom';
-
-
-
-// const mapStateToProps = reduxState => ({
-//     reduxState,
-// });
+import { HashRouter as route, Link } from 'react-router-dom';
 
 class Details extends Component {
-    // componentDidMount() {
-    //     // use component did mount to dispatch an action to request the movielist from the DB
-    //     this.getMovies()
-    // }
-
     state = {
         title: ''
-      }
+    }
 
-      handleChange = (event) => {
+    handleChange = (event) => {
         this.setState({
-          title: event.target.value
-        }, function() {
+            title: event.target.value
+        }, function () {
             console.log(this.state);
         })
-      }
+    }
 
-      sendSearch() {
+    sendSearch() {
         // this.props.dispatch({ type: 'POST_SEARCH', payload: this.state.gifSearch });
         this.props.dispatch({ type: 'FETCH_DETAILS', payload: this.state.title });
-      }
+    }
 
     getMovies() {
-        this.props.dispatch({ type: 'FETCH_MOVIES'});
+        this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
 
     render() {
         return (
             <div>
-                              <li><Link to="/">Back to List</Link></li>
-
-                <h3>This is the Details Page</h3>
-                <pre>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</pre>
-                {/* <button onClick={(event) => this.sendSearch(event)}>SEARCH</button> */}
-
-                {/* <input onChange={this.handleChange} type='text' placeholder='Search for a title!' /> */}
-
+                <div className="navbarAddMovie" id="cancelNav">
+                    <Link to="/">Back to Gallery</Link>
+                    {/* <li><Link to="/">Back to List</Link></li> */}
+                </div>
+                <h2>Details</h2>
+                {/* <pre>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</pre> */}
                 {this.props.reduxState.movieReducer.map((movie) => {
-                            return(
-                                <section  className="posterList" key={movie.id}>{movie.title} 
-                                <br/>
-                                {movie.description}</section>
-                          
-                                )
-                                
-                        })}
-                {/* <table className="center">
-                <tbody>
-
-
-                <tr><th>Movie Name</th></tr>
-                    {this.props.reduxState.movieReducer.data.map(movie =>
-                        <tr key={movie.id}><td>
-                            {movie.title}</td>
-                        </tr>)}
-                        </tbody>
-            </table> */}
-
-
-
+                    return (
+                        <section className="posterList" key={movie.id}>{movie.title}
+                            <br />
+                            {movie.description}</section>
+                    )
+                })}
             </div>
         );
     }
