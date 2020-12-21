@@ -17,25 +17,25 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovieSaga);
     yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
-    // yield takeEvery('ADD_MOVIE', addMovieSaga);
+    yield takeEvery('ADD_MOVIE', addMovieSaga);
 }
 
-// function* addMovieSaga(action){
+function* addMovieSaga(action){
 
-//     console.log('in addMovieSaga');
-//     console.log('action.payload', action.payload);
+    console.log('in addMovieSaga');
+    console.log('action.payload', action.payload);
 
-//     try {
-//         const movieData = yield axios.post(`/api/movie/${action.payload}`);
-//       //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
-//        // console.log('indexline24', giphyURL);
+    try {
+        const movieData = yield axios.post(`/api/movie/${action.payload}`);
+      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
+       // console.log('indexline24', giphyURL);
 
-//         yield put({ type:'SET_MOVIES', payload: movieData.data})
-//     } catch (error) {
-//         console.log('error fetching', error);
+        yield put({ type:'SET_MOVIES', payload: movieData.data})
+    } catch (error) {
+        console.log('error fetching', error);
 
-//     }
-// }
+    }
+}
 
 function* fetchDetailsSaga(action) {
     console.log('in fetchDetailsSaga');

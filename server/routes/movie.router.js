@@ -1,6 +1,14 @@
 const express = require('express');
+const { actionChannel } = require('redux-saga/effects');
 const router = express.Router();
 const pool = require('../modules/pool')
+/*ASSISTANCE REQUESTED-------------------
+--I am having difficulty getting my action.payload from my addMovieSaga 
+into the server-side of my POST.
+I have verified with a consolelog on line 26: index.js that the movie information
+is the action.payload in the addMovieSaga.
+However, line line57:movie.router.js logs req.body as an empty obj.
+*/
 
 // router.post('/',  (req, res) => {
 //   let newMovie = req.body;
