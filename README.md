@@ -4,13 +4,9 @@
 
 # MOVIE SAGAS
 
-## Description
-
 _Duration: 20 hr_
 
 You love movies. Enjoy the classic movies of our generation. I present to you the Movie saga. Immerse yourself in movies as you peruse my gallery of quality movie posters. Delve deeper: read fannatical information about your film of quander. Even add to the collection. Promote your own timeless classic.
-
-## Screen Shot
 
 ![intro](public/images/screenShots/gallery.png)
 
@@ -18,7 +14,6 @@ You love movies. Enjoy the classic movies of our generation. I present to you th
 
 - [Node.js](https://nodejs.org/en/)
 - [React.js](https://reactjs.org/)
-- [React-Redux] (https://react-redux.js.org/)
 - [Redux-Saga](https://redux-saga.js.org/)
 
 ## Installation
