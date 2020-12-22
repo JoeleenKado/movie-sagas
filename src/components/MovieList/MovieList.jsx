@@ -23,7 +23,7 @@ class MovieList extends Component {
                     <Link to="/AddMovie">AddMovie</Link>
                 </div>
                 {/* <li><Link to="/Details">Details</Link></li> */}
-                {/* <h3>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</h3> */}
+                <h3>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</h3>
                 {this.props.reduxState.movieReducer.map((movie) => {
                     return (
                         <section className="posterList" key={movie.id}> <Link to="/Details"><img onClick={(event) => this.getDetails(event, { movie })} src={movie.poster} alt="" /></Link> </section>
