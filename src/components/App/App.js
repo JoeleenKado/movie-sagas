@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Movies!</h1>
+        <h1>Joel's Movie Gallery</h1>
         <Router>
           {/* ADD PAGES! */}
           <nav>
