@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+//STYLING
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
 
 class AddMovie extends Component {
     state = {
@@ -78,12 +83,12 @@ class AddMovie extends Component {
                         <option value="11">Science Fiction</option>
                         <option value="12">Space-Opera</option>
                         <option value="13">Superhero</option>
-                    </select>
-                    <input type="submit" />
+                                        </select>
+                     {/* <MuiThemeProvider theme={theme}> */}
+                     <input type="submit" />
 
-                    {/* <MuiThemeProvider theme={theme}>
-                        <CommentsNextButton addCommentsProp={this.addComments} />
-                    </MuiThemeProvider> */}
+                     {/* <CommentsNextButton addCommentsProp={this.addComments} /> */}
+                    {/* </MuiThemeProvider>  */}
 
 
                 </form>

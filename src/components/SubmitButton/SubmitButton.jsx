@@ -11,11 +11,11 @@ const styles = theme => ({
   }
 });
 
-class CommentsNextButton extends Component {
+class SubmitButton extends Component {
   render() {
     return (<Button onClick={this.props.addCommentsProp} variant="contained" color="primary">
       NEXT
     </Button>)
   }
 };//END CommentsNextButton
-export default withStyles(styles)(CommentsNextButton);
+export default withStyles(styles)(SubmitButton);
