@@ -104,7 +104,7 @@ class AddMovie extends Component {
                     </MuiThemeProvider>  */}
                     
                     <MuiThemeProvider theme={theme}>
-                        <SubmitButton  input type="submit" addMovieProp={this.addMovie} />
+                        <SubmitButton addMovieProp={this.addMovie} />
                     </MuiThemeProvider>
 
 
