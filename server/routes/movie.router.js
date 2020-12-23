@@ -27,8 +27,8 @@ However, line line57:movie.router.js logs req.body as an empty obj.
 // });
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT * 
-                     FROM movies`;
+  const queryText = `SELECT title, poster FROM "movies"
+  ;`;
   console.log('Querying DB...');
 
   pool.query(queryText)
@@ -41,9 +41,13 @@ router.get('/', (req, res) => {
 
 router.get('/:title', (req, res) => {
   const title = req.params.title
-  const queryText = `SELECT *
-                     FROM movies
-                     WHERE title ILIKE $1`;
+  const queryText = `SELECT "movies".title, "movies".description, "genres".name FROM "movies"
+  LEFT JOIN "movies_genres" 
+  ON "movies".id = "movies_genres".movies_id
+  LEFT JOIN "genres" ON "movies_genres".genres_id = "genres".id
+  
+  
+                    WHERE title ILIKE $1;`;
   console.log('in get detailsQuerying DB...');
   console.log(title);
 
@@ -66,9 +70,11 @@ router.post('/:movieInfo', (req, res) => {
   // FIRST QUERY MAKES MOVIE
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
     .then(result => {
-      console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
+      // console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
+      console.log('New Movie Id:', result.rows[0].movies_id); //ID IS HERE!
 
-      const createdMovieId = result.rows[0].id
+      // const createdMovieId = result.rows[0].id
+      const createdMovieId = result.rows[0].movies_id;
 
       // Depending on how you make your junction table, this insert COULD change.
       const insertMovieGenreQuery = `

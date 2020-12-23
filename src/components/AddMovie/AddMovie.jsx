@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+//STYLING
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
+import amber from '@material-ui/core/colors/amber';
+
+import SubmitButton from '../SubmitButton/SubmitButton.jsx'
+
+const theme = createMuiTheme({
+    palette: {
+        primary: amber,
+        secondary: red
+    }
+});
+
+
 
 class AddMovie extends Component {
     state = {
@@ -8,7 +25,7 @@ class AddMovie extends Component {
             title: '',
             poster: '',
             description: '',
-            genre: ''
+            genre_id: ''
         }
     }
 
@@ -54,7 +71,8 @@ class AddMovie extends Component {
                 <div className="navbarAddMovie" id="cancelNav">
                     <Link to="/">CANCEL</Link>
                 </div>
-                <form onSubmit={this.addMovie}>
+                <form >
+                {/* onSubmit={this.addMovie} */}
                     {/* <lable>Title:</lable> */}
                     <input type="text" placeholder="Title" value={this.state.newMovie.title} onChange={(event) => this.handleChange(event, 'title')} />
                     {/* <lable>Poster:</lable> */}
@@ -65,22 +83,32 @@ class AddMovie extends Component {
                     <label for="genre">Select a Genre:</label>
                     <select value={this.state.genre} onChange={(event) => this.handleChange(event, 'genre')}>
                         <option value="" selected disabled hidden>Genre</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Animated">Animated</option>
-                        <option value="Biographical">Biographical</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Disaster">Disaster</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Epic">Epic</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Musical">Musical</option>
-                        <option value="Romantic">Romantic</option>
-                        <option value="Science Fiction">Science Fiction</option>
-                        <option value="Space-Opera">Space-Opera</option>
-                        <option value="Superhero">Superhero</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <input type="submit" />
+                        <option value="1">Adventure</option>
+                        <option value="2">Animated</option>
+                        <option value="3">Biographical</option>
+                        <option value="4">Comedy</option>
+                        <option value="5">Disaster</option>
+                        <option value="6">Drama</option>
+                        <option value="7">Epic</option>
+                        <option value="8">Fantasy</option>
+                        <option value="9">Musical</option>
+                        <option value="10">Romantic</option>
+                        <option value="11">Science Fiction</option>
+                        <option value="12">Space-Opera</option>
+                        <option value="13">Superhero</option>
+                                        </select>
+                     {/* <MuiThemeProvider theme={theme}> */}
+                     {/* <input type="submit" /> */}
+
+                     {/* <SubmitButton onClick={this.addMovie}/>
+                    </MuiThemeProvider>  */}
+                    
+                    <MuiThemeProvider theme={theme}>
+                        <SubmitButton addMovieProp={this.addMovie} />
+                    </MuiThemeProvider>
+
+
+
                 </form>
             </div>
         );
