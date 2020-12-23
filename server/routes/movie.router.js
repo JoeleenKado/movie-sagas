@@ -2,13 +2,7 @@ const express = require('express');
 const { actionChannel } = require('redux-saga/effects');
 const router = express.Router();
 const pool = require('../modules/pool')
-/*ASSISTANCE REQUESTED-------------------
---I am having difficulty getting my action.payload from my addMovieSaga 
-into the server-side of my POST.
-I have verified with a consolelog on line 26: index.js that the movie information
-is the action.payload in the addMovieSaga.
-However, line line57:movie.router.js logs req.body as an empty obj.
-*/
+
 
 // router.post('/',  (req, res) => {
 //   let newMovie = req.body;
@@ -71,10 +65,12 @@ router.post('/', (req, res) => {
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
     .then(result => {
       // console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
-      console.log('New Movie Id:', result.rows[0].movies_id); //ID IS HERE!
+      console.log('New Movie Id:', result.rows[0]); //ID IS HERE!
 
-      // const createdMovieId = result.rows[0].id
-      const createdMovieId = result.rows[0].movies_id;
+      const createdMovieId = result.rows[0].id
+      // const createdMovieId = result.rows[0].movies_id;
+      // console.log('The createdMovieId:', createdMovieId);
+      
 
       // Depending on how you make your junction table, this insert COULD change.
       const insertMovieGenreQuery = `
@@ -82,7 +78,11 @@ router.post('/', (req, res) => {
       VALUES  ($1, $2);
       `
       // SECOND QUERY MAKES GENRE FOR THAT NEW MOVIE
-      pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
+      // pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
+      console.log(`LINE80: createMovieId: ${createdMovieId}; req.body.genre: ${req.body.genre}`);
+        
+      pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre]).then(result => {
+
         //Now that both are done, send back success!
         res.sendStatus(201);
       }).catch(err => {

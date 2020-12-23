@@ -63,6 +63,7 @@ class AddMovie extends Component {
             console.log('adding Movie');
         }
         console.log(this.state);
+        this.getMovies();
     }
     
     render() {
