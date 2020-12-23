@@ -27,7 +27,7 @@ However, line line57:movie.router.js logs req.body as an empty obj.
 // });
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "movies"
+  const queryText = `SELECT title, poster FROM "movies"
   ;`;
   console.log('Querying DB...');
 
@@ -41,9 +41,11 @@ router.get('/', (req, res) => {
 
 router.get('/:title', (req, res) => {
   const title = req.params.title
-  const queryText = `SELECT * FROM "movies"
+  const queryText = `SELECT "movies".title, "movies".description, "genres".name FROM "movies"
   LEFT JOIN "movies_genres" 
   ON "movies".id = "movies_genres".movies_id
+  LEFT JOIN "genres" ON "movies_genres".genres_id = "genres".id
+  
   
                     WHERE title ILIKE $1;`;
   console.log('in get detailsQuerying DB...');

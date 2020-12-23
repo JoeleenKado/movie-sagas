@@ -80,6 +80,12 @@ class AddMovie extends Component {
                         <option value="13">Superhero</option>
                     </select>
                     <input type="submit" />
+
+                    {/* <MuiThemeProvider theme={theme}>
+                        <CommentsNextButton addCommentsProp={this.addComments} />
+                    </MuiThemeProvider> */}
+
+
                 </form>
             </div>
         );

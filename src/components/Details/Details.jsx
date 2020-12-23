@@ -37,7 +37,7 @@ class Details extends Component {
                     return (
                         <section className="posterList" key={movie.id}>{movie.title}
                             <br />
-                           Genre: {movie.genres_id}
+                           Genre: {movie.name}
                             <br/>
                             {movie.description}</section>
                     )
