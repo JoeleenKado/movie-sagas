@@ -13,8 +13,8 @@ const styles = theme => ({
 
 class SubmitButton extends Component {
   render() {
-    return (<Button onClick={this.props.addCommentsProp} variant="contained" color="primary">
-      NEXT
+    return (<Button onClick={this.props.addMovieProp} variant="contained" color="primary">
+      ADD TO COLLECTION
     </Button>)
   }
 };//END CommentsNextButton

@@ -6,6 +6,18 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
+import amber from '@material-ui/core/colors/amber';
+
+import SubmitButton from '../SubmitButton/SubmitButton.jsx'
+
+const theme = createMuiTheme({
+    palette: {
+        primary: amber,
+        secondary: red
+    }
+});
+
+
 
 class AddMovie extends Component {
     state = {
@@ -59,7 +71,8 @@ class AddMovie extends Component {
                 <div className="navbarAddMovie" id="cancelNav">
                     <Link to="/">CANCEL</Link>
                 </div>
-                <form onSubmit={this.addMovie}>
+                <form >
+                {/* onSubmit={this.addMovie} */}
                     {/* <lable>Title:</lable> */}
                     <input type="text" placeholder="Title" value={this.state.newMovie.title} onChange={(event) => this.handleChange(event, 'title')} />
                     {/* <lable>Poster:</lable> */}
@@ -85,10 +98,15 @@ class AddMovie extends Component {
                         <option value="13">Superhero</option>
                                         </select>
                      {/* <MuiThemeProvider theme={theme}> */}
-                     <input type="submit" />
+                     {/* <input type="submit" /> */}
 
-                     {/* <CommentsNextButton addCommentsProp={this.addComments} /> */}
-                    {/* </MuiThemeProvider>  */}
+                     {/* <SubmitButton onClick={this.addMovie}/>
+                    </MuiThemeProvider>  */}
+                    
+                    <MuiThemeProvider theme={theme}>
+                        <SubmitButton  input type="submit" addMovieProp={this.addMovie} />
+                    </MuiThemeProvider>
+
 
 
                 </form>
