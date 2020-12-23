@@ -26,7 +26,7 @@ function* addMovieSaga(action){
     console.log('action.payload', action.payload);
 
     try {
-        const movieData = yield axios.post(`/api/movie/${action.payload}`);
+        const movieData = yield axios.post(`/api/movie/`, action.payload);
       //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
        // console.log('indexline24', giphyURL);
 

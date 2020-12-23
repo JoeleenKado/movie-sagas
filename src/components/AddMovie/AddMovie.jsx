@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as /*Router,*/Route, Link } from 'react-router-dom';
 //STYLING
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -25,7 +25,7 @@ class AddMovie extends Component {
             title: '',
             poster: '',
             description: '',
-            genre_id: ''
+            genre: ''
         }
     }
 
@@ -82,7 +82,8 @@ class AddMovie extends Component {
                     <br />
                     <label for="genre">Select a Genre:</label>
                     <select value={this.state.genre} onChange={(event) => this.handleChange(event, 'genre')}>
-                        <option value="" selected disabled hidden>Genre</option>
+                    {/* <option value="" selected disabled hidden>Genre</option> */}
+                        <option value="" selected >Genre</option>
                         <option value="1">Adventure</option>
                         <option value="2">Animated</option>
                         <option value="3">Biographical</option>

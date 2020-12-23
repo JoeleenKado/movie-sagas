@@ -27,7 +27,7 @@ However, line line57:movie.router.js logs req.body as an empty obj.
 // });
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT title, poster FROM "movies"
+  const queryText = `SELECT title, poster, id FROM "movies"
   ;`;
   console.log('Querying DB...');
 
@@ -59,8 +59,8 @@ router.get('/:title', (req, res) => {
     });
 });
 
-router.post('/:movieInfo', (req, res) => {
-  console.log('req.body', req.body);
+router.post('/', (req, res) => {
+  console.log('movie.router.js (LINE:63) req.body:', req.body);
   // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
   INSERT INTO "movies" ("title", "poster", "description")
