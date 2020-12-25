@@ -1,42 +1,52 @@
+//MODULES
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Route, Link } from 'react-router-dom';
 
 class MovieList extends Component {
+    // *---------STEP 1-------------* 
+    //on mount we will run our function which sends a dispatch to our index 
+    //to do a get request so that we get our movie poster gallery
     componentDidMount() {
-        // use component did mount to dispatch an action to request the movielist from the DB
         this.getMovies()
-       // this.props.dispatch({ type: 'FETCH_MOVIES' });
- }
- 
- getDetails = (event, { movie }) => {
+    }
+    // *-------------Step 9------------*
+    //FETCH_DETAILS dispatch triggers the rootSata in index.js
+    getDetails = (event, { movie }) => {
         console.log('Gettin Details for :', movie.title)
         this.props.dispatch({ type: 'FETCH_DETAILS', payload: movie.title });
     }
-
+    //sends a dispatch to our root saga
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
+    //here we will render our movie posters to the dom 
     render() {
         return (
             <div>
                 <div className="navbarMovieList">
+                    {/* *------------STEP 15-----------*
+                    Click this link to be transported to the AddMovie Component  */}
                     <Link to='/AddMovie'>AddMovie</Link>
                 </div>
                 {/* <li><Link to="/Details">Details</Link></li> */}
                 {/* <h3>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</h3> */}
+                {/* *----------STEP 7----------*
+            here we will render our movie posters to the dom  */}
                 {this.props.reduxState.movieReducer.map((movie) => {
                     return (
-                        <section className="posterList" key={movie.id}> 
-                            <Link to="/Details"><img onClick={(event) => this.getDetails(event, { movie })} 
-                                src={movie.poster} alt="" />
-                                </Link> 
+                        <section className="posterList" key={movie.id}>
+                            <Link to="/Details">
+                                {/* *-------------STEP 8--------------*
+                              click on a poster to run getDetails */}
+                                <img onClick={(event) => this.getDetails(event, { movie })} src={movie.poster} alt="" />
+                            </Link>
                         </section>
                     )
                 })}
             </div>
         );
     }
-}
+};//END MOVIELIST
 const putReduxStateOnProps = (reduxState) => ({ reduxState });
 export default connect(putReduxStateOnProps)(MovieList);

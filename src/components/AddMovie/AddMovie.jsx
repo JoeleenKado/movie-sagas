@@ -1,3 +1,4 @@
+//MODULES
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as /*Router,*/Route, Link } from 'react-router-dom';
@@ -7,17 +8,16 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 import amber from '@material-ui/core/colors/amber';
-
+//COMPONENTS
 import SubmitButton from '../SubmitButton/SubmitButton.jsx'
 
+//BUTTON THEME
 const theme = createMuiTheme({
     palette: {
         primary: amber,
         secondary: red
     }
 });
-
-
 
 class AddMovie extends Component {
     state = {
@@ -28,7 +28,8 @@ class AddMovie extends Component {
             genre: ''
         }
     }
-
+    //STEP 15
+    //AS you fill the input fields, the values will be saved to localstate
     handleChange = (event, inputType) => {
         console.log('event happended')
         this.setState({
@@ -43,40 +44,29 @@ class AddMovie extends Component {
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
-
+    // *---------------STEP 16------------------*
+    //click 'Add to Collection' to send a ADD_MOVIE dispatch which triggers root saga on index.js
+    //This dispatch is the first step in rendering a GENRE to our Details Component   
     addMovie = (event) => {
-        // let field = this.state.newMovie;
+        event.preventDefault();
+        this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state.newMovie })
 
-        // if (field.title === '' || field.poster === '' || field.description === '' || field.genre === '') {
-        //     alert('Please fill out the input fields.')
-        // } else {
-            event.preventDefault();
-            this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state.newMovie })
-            // this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state})
-
-            this.setState({
-                newMovie: {
-                    title: '',
-                    poster: '',
-                    description: '',
-                    genre: ''
-                }
-            });
-            console.log('adding Movie');
-        // }
+        this.setState({
+            newMovie: {
+                title: '',
+                poster: '',
+                description: '',
+                genre: ''
+            }
+        });
+        console.log('adding Movie');
         console.log(this.state);
-      //this.getMovies();
-    //   this.setState({
-
-    //   })
-    alert ("Your movie as been added to the collection.")
+        alert("Your movie as been added to the collection.")
         this.props.history.push('/');
 
     }
 
-
-    
-    goHome= ()=> {
+    goHome = () => {
         this.props.history.push('/');
     }
 
@@ -86,27 +76,29 @@ class AddMovie extends Component {
                 <div className="navbarAddMovie" id="cancelNav">
                     <Link to="/">CANCEL</Link>
                     {/* <button onClick={this.goHome}>CANCEL</button> */}
-
                 </div>
+
                 <h3>RS: {JSON.stringify(this.props.reduxState)}</h3>
-
                 <form >
-                {/* onSubmit={this.addMovie} */}
-                    <lable>Title:</lable> 
-                    <input type="text" value={this.state.newMovie.title} onChange={(event) => this.handleChange(event, 'title')} />
-                   <br/>
-                     <lable>Poster:</lable> 
-                    <input type='text' value={this.state.newMovie.poster} onChange={(event) => this.handleChange(event, 'poster')} />
-                    <br/>
-                    <lable>Description:</lable> 
-                    <input id="descriptionField" type='text' value={this.state.newMovie.description} onChange={(event) => this.handleChange(event, 'description')} />
+                    {/* onSubmit={this.addMovie} */}
+                    <lable>Title:</lable>
+                    <input type="text" value={this.state.newMovie.title}
+                        onChange={(event) => this.handleChange(event, 'title')} />
                     <br />
-                    <label >Genre:</label> 
+                    <lable>Poster:</lable>
+                    <input type='text' value={this.state.newMovie.poster}
+                        onChange={(event) => this.handleChange(event, 'poster')} />
+                    <br />
+                    <lable>Description:</lable>
+                    <input id="descriptionField" type='text' value={this.state.newMovie.description}
+                        onChange={(event) => this.handleChange(event, 'description')} />
+                    <br />
+                    <label >Genre:</label>
                     {/* <label for="genre">Select a Genre:</label> */}
-
-                    <select value={this.state.genre} onChange={(event) => this.handleChange(event, 'genre')}>
-                    
-                    {/* <option value="" selected disabled hidden>Genre</option> */}
+                    <select /*data-default=""*/ value={this.state.genre}
+                        onChange={(event) => this.handleChange(event, 'genre')}>
+                        {/* <select id="my_select" data-default=""></select> */}
+                        {/* <option value="" selected disabled hidden>Genre</option> */}
                         <option value="" selected ></option>
                         <option value="1">Adventure</option>
                         <option value="2">Animated</option>
@@ -121,19 +113,11 @@ class AddMovie extends Component {
                         <option value="11">Science Fiction</option>
                         <option value="12">Space-Opera</option>
                         <option value="13">Superhero</option>
-                                        </select>
-                     {/* <MuiThemeProvider theme={theme}> */}
-                     {/* <input type="submit" /> */}
-
-                     {/* <SubmitButton onClick={this.addMovie}/>
-                    </MuiThemeProvider>  */}
-                    <br/>
+                    </select>
+                    <br />
                     <MuiThemeProvider theme={theme}>
-                    <SubmitButton addMovieProp={this.addMovie} />
+                        <SubmitButton addMovieProp={this.addMovie} />
                     </MuiThemeProvider>
-
-
-
                 </form>
             </div>
         );
