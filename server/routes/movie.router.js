@@ -82,9 +82,10 @@ router.post('/', (req, res) => {
       console.log(`LINE80: createMovieId: ${createdMovieId}; req.body.genre: ${req.body.genre}`);
         
       pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre]).then(result => {
+console.log('lin85', result.rows);
 
         //Now that both are done, send back success!
-        res.sendStatus(201);
+        res.send(201);
       }).catch(err => {
         // catch for second query
         console.log(err);
