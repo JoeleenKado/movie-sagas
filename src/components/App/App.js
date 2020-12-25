@@ -24,7 +24,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
       <div className="App">
         <Typography variant="h4" gutterBottom>
-       Joelle's Movie Gallery
+       Joeleen's Movie Gallery
       </Typography>
         <Router>
           {/* ADD PAGES! */}

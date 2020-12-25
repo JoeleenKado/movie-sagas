@@ -21,15 +21,11 @@ function* rootSaga() {
 }
 
 function* addMovieSaga(action){
-
     console.log('in addMovieSaga');
     console.log('action.payload', action.payload);
-
     try {
         const movieData = yield axios.post(`/api/movie/`, action.payload);
-     
-
-       // yield put({ type:'SET_MOVIES', payload: movieData.data})
+            // yield put({ type:'SET_MOVIES', payload: movieData.data})
       // fetchMovieSaga();
     } catch (error) {
         console.log('error fetching', error);
@@ -59,7 +55,6 @@ function* fetchMovieSaga() {
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
-
 // Used to store movies returned from the server
 const movieReducer = (state = [], action) => {
     switch (action.type) {

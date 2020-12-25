@@ -7,10 +7,9 @@ class MovieList extends Component {
         // use component did mount to dispatch an action to request the movielist from the DB
         this.getMovies()
        // this.props.dispatch({ type: 'FETCH_MOVIES' });
-
-    }
-
-    getDetails = (event, { movie }) => {
+ }
+ 
+ getDetails = (event, { movie }) => {
         console.log('Gettin Details for :', movie.title)
         this.props.dispatch({ type: 'FETCH_DETAILS', payload: movie.title });
     }
