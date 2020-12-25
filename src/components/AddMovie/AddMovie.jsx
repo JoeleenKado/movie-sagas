@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as /*Router,*/Route, Link } from 'react-router-dom';
 //STYLING
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -25,7 +25,7 @@ class AddMovie extends Component {
             title: '',
             poster: '',
             description: '',
-            genre_id: ''
+            genre: ''
         }
     }
 
@@ -45,44 +45,69 @@ class AddMovie extends Component {
     }
 
     addMovie = (event) => {
-        let field = this.state.newMovie;
+        // let field = this.state.newMovie;
 
-        if (field.title === '' || field.poster === '' || field.description === '' || field.genre === '') {
-            alert('Please fill out the input fields.')
-        } else {
+        // if (field.title === '' || field.poster === '' || field.description === '' || field.genre === '') {
+        //     alert('Please fill out the input fields.')
+        // } else {
             event.preventDefault();
             this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state.newMovie })
+            // this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state})
+
             this.setState({
                 newMovie: {
                     title: '',
                     poster: '',
                     description: '',
-                    Genre: ''
+                    genre: ''
                 }
             });
             console.log('adding Movie');
-        }
+        // }
         console.log(this.state);
+      //this.getMovies();
+    //   this.setState({
+
+    //   })
+    alert ("Your movie as been added to the collection.")
+        this.props.history.push('/');
+
     }
+
+
     
+    goHome= ()=> {
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <div>
                 <div className="navbarAddMovie" id="cancelNav">
                     <Link to="/">CANCEL</Link>
+                    {/* <button onClick={this.goHome}>CANCEL</button> */}
+
                 </div>
+                <h3>RS: {JSON.stringify(this.props.reduxState)}</h3>
+
                 <form >
                 {/* onSubmit={this.addMovie} */}
-                    {/* <lable>Title:</lable> */}
-                    <input type="text" placeholder="Title" value={this.state.newMovie.title} onChange={(event) => this.handleChange(event, 'title')} />
-                    {/* <lable>Poster:</lable> */}
-                    <input type='text' placeholder='Poster' value={this.state.newMovie.poster} onChange={(event) => this.handleChange(event, 'poster')} />
-                    {/* <lable>Description:</lable> */}
-                    <input type='text' placeholder='Description' value={this.state.newMovie.description} onChange={(event) => this.handleChange(event, 'description')} />
+                    <lable>Title:</lable> 
+                    <input type="text" value={this.state.newMovie.title} onChange={(event) => this.handleChange(event, 'title')} />
+                   <br/>
+                     <lable>Poster:</lable> 
+                    <input type='text' value={this.state.newMovie.poster} onChange={(event) => this.handleChange(event, 'poster')} />
+                    <br/>
+                    <lable>Description:</lable> 
+                    <input id="descriptionField" type='text' value={this.state.newMovie.description} onChange={(event) => this.handleChange(event, 'description')} />
                     <br />
-                    <label for="genre">Select a Genre:</label>
+                    <label >Genre:</label> 
+                    {/* <label for="genre">Select a Genre:</label> */}
+
                     <select value={this.state.genre} onChange={(event) => this.handleChange(event, 'genre')}>
-                        <option value="" selected disabled hidden>Genre</option>
+                    
+                    {/* <option value="" selected disabled hidden>Genre</option> */}
+                        <option value="" selected ></option>
                         <option value="1">Adventure</option>
                         <option value="2">Animated</option>
                         <option value="3">Biographical</option>
@@ -102,9 +127,9 @@ class AddMovie extends Component {
 
                      {/* <SubmitButton onClick={this.addMovie}/>
                     </MuiThemeProvider>  */}
-                    
+                    <br/>
                     <MuiThemeProvider theme={theme}>
-                        <SubmitButton addMovieProp={this.addMovie} />
+                    <SubmitButton addMovieProp={this.addMovie} />
                     </MuiThemeProvider>
 
 

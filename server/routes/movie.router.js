@@ -2,13 +2,7 @@ const express = require('express');
 const { actionChannel } = require('redux-saga/effects');
 const router = express.Router();
 const pool = require('../modules/pool')
-/*ASSISTANCE REQUESTED-------------------
---I am having difficulty getting my action.payload from my addMovieSaga 
-into the server-side of my POST.
-I have verified with a consolelog on line 26: index.js that the movie information
-is the action.payload in the addMovieSaga.
-However, line line57:movie.router.js logs req.body as an empty obj.
-*/
+
 
 // router.post('/',  (req, res) => {
 //   let newMovie = req.body;
@@ -27,7 +21,7 @@ However, line line57:movie.router.js logs req.body as an empty obj.
 // });
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT title, poster FROM "movies"
+  const queryText = `SELECT title, poster, id FROM "movies"
   ;`;
   console.log('Querying DB...');
 
@@ -59,8 +53,8 @@ router.get('/:title', (req, res) => {
     });
 });
 
-router.post('/:movieInfo', (req, res) => {
-  console.log('req.body', req.body);
+router.post('/', (req, res) => {
+  console.log('movie.router.js (LINE:63) req.body:', req.body);
   // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
   INSERT INTO "movies" ("title", "poster", "description")
@@ -71,10 +65,12 @@ router.post('/:movieInfo', (req, res) => {
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
     .then(result => {
       // console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
-      console.log('New Movie Id:', result.rows[0].movies_id); //ID IS HERE!
+      console.log('New Movie Id:', result.rows[0]); //ID IS HERE!
 
-      // const createdMovieId = result.rows[0].id
-      const createdMovieId = result.rows[0].movies_id;
+      const createdMovieId = result.rows[0].id
+      // const createdMovieId = result.rows[0].movies_id;
+      // console.log('The createdMovieId:', createdMovieId);
+      
 
       // Depending on how you make your junction table, this insert COULD change.
       const insertMovieGenreQuery = `
@@ -82,9 +78,14 @@ router.post('/:movieInfo', (req, res) => {
       VALUES  ($1, $2);
       `
       // SECOND QUERY MAKES GENRE FOR THAT NEW MOVIE
-      pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
+      // pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
+      console.log(`LINE80: createMovieId: ${createdMovieId}; req.body.genre: ${req.body.genre}`);
+        
+      pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre]).then(result => {
+console.log('lin85', result.rows);
+
         //Now that both are done, send back success!
-        res.sendStatus(201);
+        res.send(201);
       }).catch(err => {
         // catch for second query
         console.log(err);

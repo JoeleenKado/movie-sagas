@@ -4,12 +4,28 @@ import './App.css';
 import MovieList from '../MovieList/MovieList.jsx'
 import Details from '../Details/Details.jsx'
 import AddMovie from '../AddMovie/AddMovie.jsx'
+//STYLING
+import Typography from '@material-ui/core/Typography';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Chilanka',
+      'cursive',
+    ].join(','),
+  },});
+
+
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <div className="App">
-        <h1>Movies!</h1>
+        <Typography variant="h4" gutterBottom>
+       Joel's Movie Gallery
+      </Typography>
         <Router>
           {/* ADD PAGES! */}
           <nav>
@@ -23,6 +39,7 @@ class App extends Component {
           <Route path="/AddMovie" component={AddMovie} />
         </Router>
       </div>
+      </ThemeProvider>
     );
   }
 }

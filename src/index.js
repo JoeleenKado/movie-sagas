@@ -26,11 +26,11 @@ function* addMovieSaga(action){
     console.log('action.payload', action.payload);
 
     try {
-        const movieData = yield axios.post(`/api/movie/${action.payload}`);
-      //const giphyURL = giphyResponse.data.data.images.downsized_large.url;
-       // console.log('indexline24', giphyURL);
+        const movieData = yield axios.post(`/api/movie/`, action.payload);
+     
 
-        yield put({ type:'SET_MOVIES', payload: movieData.data})
+       // yield put({ type:'SET_MOVIES', payload: movieData.data})
+      // fetchMovieSaga();
     } catch (error) {
         console.log('error fetching', error);
 
