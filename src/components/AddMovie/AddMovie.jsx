@@ -82,15 +82,16 @@ class AddMovie extends Component {
     render() {
         return (
             <div>
-                <div className="navbarAddMovie" id="cancelNav">
-                    <Link to="/">CANCEL</Link>
-                    {/* <button onClick={this.goHome}>CANCEL</button> */}
-                </div>
-                {/* <h3>RS: {JSON.stringify(this.props.reduxState)}</h3> */}
-                <form >
-                    {/* onSubmit={this.addMovie} */}
-                    <MuiThemeProvider theme={theme}>
-                        <Typography variant="h4" gutterBottom>
+                <MuiThemeProvider theme={theme}>
+                    <Typography variant="h4" gutterBottom>
+                        <h2 id="AddMovieHeading">Film Submission Form</h2>
+                        <div className="navbarAddMovie" id="cancelNav">
+                            <Link to="/">CANCEL</Link>
+                            {/* <button onClick={this.goHome}>CANCEL</button> */}
+                        </div>
+                        {/* <h3>RS: {JSON.stringify(this.props.reduxState)}</h3> */}
+                        <form >
+                            {/* onSubmit={this.addMovie} */}
                             <lable>Title:</lable>
                             <input type="text" value={this.state.newMovie.title}
                                 onChange={(event) => this.handleChange(event, 'title')} />
@@ -124,11 +125,11 @@ class AddMovie extends Component {
                                 <option value="12">Space-Opera</option>
                                 <option value="13">Superhero</option>
                             </select>
-                        </Typography>
-                        <br />
-                        <SubmitButton addMovieProp={this.addMovie} />
-                    </MuiThemeProvider>
-                </form>
+                            <br />
+                            <SubmitButton addMovieProp={this.addMovie} />
+                        </form>
+                    </Typography>
+                </MuiThemeProvider>
             </div>
         );
     }

@@ -7,7 +7,6 @@ import Details from '../Details/Details.jsx'
 import AddMovie from '../AddMovie/AddMovie.jsx'
 //STYLING
 import './App.css';
-import Typography from '@material-ui/core/Typography';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //TYPEFACE/FONTS
@@ -26,9 +25,6 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Typography variant="h4" gutterBottom>
-            Joeleen's Movie Gallery
-      </Typography>
           {/* These are the routes to our components */}
           <Router>
             {/* ADD PAGES! */}

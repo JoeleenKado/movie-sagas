@@ -2,6 +2,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Route, Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+
+// const theme = createMuiTheme({
+//     typography: {
+//       fontFamily: [
+//         'cursive',
+//         'Chilanka',
+//       ].join(','),
+//     },
+//   });
 
 class MovieList extends Component {
     // *---------STEP 1-------------* 
@@ -24,6 +34,10 @@ class MovieList extends Component {
     render() {
         return (
             <div>
+                <Typography variant="h4" gutterBottom>
+                    <h2 id="MovieListHeading">Joeleen's Movie Gallery</h2>
+                </Typography>
+
                 <div className="navbarMovieList">
                     {/* *------------STEP 15-----------*
                     Click this link to be transported to the AddMovie Component  */}
