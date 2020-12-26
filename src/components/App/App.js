@@ -14,8 +14,8 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
-      'Chilanka',
       'cursive',
+      'Chilanka',
     ].join(','),
   },
 });
