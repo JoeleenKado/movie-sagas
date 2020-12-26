@@ -8,7 +8,7 @@ _Duration: 20 hr_
 
 You love movies. Enjoy the classic movies of our generation. I present to you the Movie saga. Immerse yourself in movies as you peruse my gallery of quality movie posters. Delve deeper: read fannatical information about your film of quander. Even add to the collection. Promote your own timeless classic.
 
-<!-- ![intro](public/images/screenShots/gallery.png) -->
+![intro](public/images/screenShots/gallery.png)
 ![intro](public/images/screenShots/form.png)
 
 ### Prerequisites
