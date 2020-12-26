@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Route, Link } from 'react-router-dom';
+//STYLING
 import Typography from '@material-ui/core/Typography';
 
 // const theme = createMuiTheme({

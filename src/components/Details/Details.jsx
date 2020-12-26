@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as route, Link } from 'react-router-dom';
+//STYLING
+import Typography from '@material-ui/core/Typography';
 
 class Details extends Component {
     render() {
@@ -13,7 +15,9 @@ class Details extends Component {
                 </div>
                 {/* *-----------------STEP 14--------------*
                 Here we will see details of our movie poster that we clicked on from the MovieList */}
-                <h2>Details</h2>
+                <Typography variant="h4" gutterBottom>
+                    <h2>Details</h2>
+                </Typography>
                 {/* <pre>RS.movieReducer: {JSON.stringify(this.props.reduxState.movieReducer)}</pre> */}
                 {this.props.reduxState.movieReducer.map((movie) => {
                     return (
@@ -24,6 +28,7 @@ class Details extends Component {
                             {movie.description}</section>
                     )
                 })}
+
             </div>
         );
     }
