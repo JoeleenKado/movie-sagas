@@ -28,7 +28,6 @@ class Details extends Component {
                             {movie.description}</section>
                     )
                 })}
-
             </div>
         );
     }
