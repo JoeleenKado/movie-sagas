@@ -53,8 +53,9 @@ class AddMovie extends Component {
     //click 'Add to Collection' to send a ADD_MOVIE dispatch which triggers root saga on index.js
     //This dispatch is the first step in rendering a GENRE to our Details Component   
     addMovie = (event) => {
-        if (this.state.title === '' || this.state.description === '' || this.state.genre === '') {
+        if (this.state.newMovie.title === '' || this.state.newMovie.description === '' || this.state.newMovie.genre === '') {
             alert('Please do not leave input fields vacant.')
+
         } else {
             event.preventDefault();
             this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state.newMovie })
