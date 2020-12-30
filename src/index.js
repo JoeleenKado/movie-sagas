@@ -32,6 +32,9 @@ function* addMovieSaga(action) {
     console.log('action.payload', action.payload);
     try {
         const movieData = yield axios.post(`/api/movie/`, action.payload);
+        console.log('line 35;index:', movieData);
+        //yield put({ type: 'FETCH_MOVIES'})
+
     } catch (error) {
         console.log('error fetching', error);
 
