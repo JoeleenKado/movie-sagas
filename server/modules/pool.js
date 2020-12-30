@@ -15,6 +15,7 @@ if (process.env.DATABASE_URL) {
     let auth = params.auth.split(':');
 
     config = {
+        connectionString: process.env.DATABASE_URL,
         user: auth[0],
         password: auth[1],
         host: params.hostname,
